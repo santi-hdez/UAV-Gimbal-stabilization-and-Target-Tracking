@@ -195,18 +195,13 @@ uav-gimbal-tracking-simulink/
 ├── model/
 │   └── UAV_Gimbal_Stabilization_and_Moving_Target_Tracking.slx
 │
-├── scripts/
+├── animation_script/
 │   ├── animate_gimbal_tracking.m
-│   └── plot_monitoring_results.m
 │
 ├── media/
 │   ├── uav_gimbal_tracking.gif
-│   ├── azimuth_tracking.png
-│   ├── elevation_tracking.png
-│   └── tracking_errors.png
-│
-└── docs/
-    └── model_overview.png
+│   ├── model_overview.png
+
 ```
 ---
 
