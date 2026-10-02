@@ -195,6 +195,14 @@ The field-of-view cone is also intended primarily as a visualization aid rather 
 
    to generate the 3D visualization and animated GIF.
 
+---
+
+## Result
+
+![tracking](media/movie_rho.gif)
+
+---
+
 ## Repository structure
 
 ```text
