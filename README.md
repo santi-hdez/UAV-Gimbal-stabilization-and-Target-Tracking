@@ -8,8 +8,6 @@ The model computes the line of sight (LOS) from a moving UAV to a moving ground 
 
 ## Overview
 
-![Simulink model](media/model_overview.png)
-
 The simulation includes:
 
 - Moving UAV and ground-target trajectories
@@ -33,6 +31,8 @@ The simulation can be divided conceptually into four stages:
 2. **LOS geometry and sensor model**
 3. **Gimbal control**
 4. **Gimbal dynamics and monitoring**
+
+![Simulink model](media/model_overview.png)
 
 ### UAV and target kinematics
 
