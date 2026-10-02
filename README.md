@@ -225,7 +225,12 @@ uav-gimbal-tracking-simulink/
 
 ---
 
-## Result
+## Results
+
+Simulation results can be explored directly in Simulink through the
+diagnostic scopes included in the **Monitoring** subsystem. These scopes
+allow the desired and actual azimuth and elevation angles, as well as the
+corresponding tracking errors, to be inspected throughout the simulation.
 
 ![uav_gimbal_tracking](media/uav_gimbal_tracking.gif)
 
