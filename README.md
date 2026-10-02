@@ -126,7 +126,7 @@ The current model parameters are:
 | Damping b | 0.06 | 0.05 |
 | Maximum torque | ±1.5 N m | ±1.5 N m |
 | Maximum angular rate | ±120 deg/s | ±120 deg/s |
-| Angular range | ±160 deg | -90 to +30 deg |
+| Angular range | Continuous | -90 to +30 deg |
 
 These parameters are illustrative values used for the simulation and are not intended to represent a specific commercial gimbal.
 
