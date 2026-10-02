@@ -220,4 +220,13 @@ uav-gimbal-tracking-simulink/
     └── model_overview.png
 ```
 
+---
+
+## Author
+
+**Santiago Hernández Díaz**
+
+PhD candidate in Physics
+University of Tübingen
+
 
