@@ -227,7 +227,7 @@ uav-gimbal-tracking-simulink/
 
 ## Result
 
-![tracking](media/movie_rho.gif)
+![tracking](media/uav_gimbal_tracking.gif)
 
 ---
 
