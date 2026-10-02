@@ -4,7 +4,7 @@ MATLAB/Simulink project for modeling and controlling a two-axis gimbal mounted o
 
 The model computes the line of sight (LOS) from a moving UAV to a moving ground target, transforms the target direction into the UAV body frame, and controls the gimbal azimuth and elevation to maintain target tracking despite UAV attitude motion, sensor noise, actuator dynamics, and attitude disturbances.
 
-![UAV gimbal tracking animation](media/uav_gimbal_tracking.gif)
+---
 
 ## Overview
 
@@ -20,6 +20,8 @@ The simulation includes:
 - Torque, angular-rate, and angular-position constraints
 - Tracking-error monitoring
 - 3D visualization of the UAV, target, LOS, camera boresight, and field of view
+
+---
 
 ## Simulink Model
 
@@ -68,6 +70,8 @@ The body coordinate convention used in the model is:
 
 Zero gimbal azimuth and elevation therefore correspond to a camera boresight aligned with the UAV +x body axis.
 
+---
+
 ### Line-of-sight angles
 
 The desired gimbal angles are calculated from the target vector expressed in body coordinates:
@@ -86,6 +90,8 @@ $$
 
 Angular measurement noise is added to the desired LOS angles before they are supplied to the controller.
 
+---
+
 ### Gimbal controller
 
 Independent PID controllers are used for the azimuth and elevation axes.
@@ -102,6 +108,8 @@ Current controller parameters are:
 Back-calculation anti-windup is enabled with `Kb = 1`.
 
 The azimuth error is wrapped to the interval [-pi, pi] to avoid discontinuities when crossing the angular boundary.
+
+---
 
 ### Gimbal dynamics
 
@@ -128,6 +136,8 @@ The current model parameters are:
 | Maximum angular rate | ±120 deg/s | ±120 deg/s |
 | Angular range | Continuous | -90 to +30 deg |
 
+---
+
 ## Disturbances and sensor noise
 
 The UAV trajectory contains time-varying position and attitude components, requiring the gimbal to continuously adapt its orientation to maintain the target within the camera line of sight.
@@ -137,6 +147,8 @@ Additional attitude disturbances are introduced during the simulation to examine
 Angular measurement noise is also included in the LOS measurements.
 
 Together, these effects provide a simple test environment for evaluating the tracking response under changing operating conditions.
+
+---
 
 ## 3D Visualization
 
@@ -170,6 +182,8 @@ $$
 The UAV geometry and gimbal size in the animation are deliberately enlarged for visibility and are not drawn to physical scale.
 
 The field-of-view cone is also intended primarily as a visualization aid rather than as a optical camera model.
+
+---
 
 ## Running the project
 
