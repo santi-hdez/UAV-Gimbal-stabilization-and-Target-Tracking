@@ -182,7 +182,32 @@ $$
 The UAV geometry and gimbal size in the animation are deliberately enlarged for visibility and are not drawn to physical scale.
 
 The field-of-view cone is also intended primarily as a visualization aid rather than as a optical camera model.
+---
 
+## Repository structure
+
+```text
+uav-gimbal-tracking-simulink/
+│
+├── README.md
+├── LICENSE
+│
+├── model/
+│   └── UAV_Gimbal_Stabilization_and_Moving_Target_Tracking.slx
+│
+├── scripts/
+│   ├── animate_gimbal_tracking.m
+│   └── plot_monitoring_results.m
+│
+├── media/
+│   ├── uav_gimbal_tracking.gif
+│   ├── azimuth_tracking.png
+│   ├── elevation_tracking.png
+│   └── tracking_errors.png
+│
+└── docs/
+    └── model_overview.png
+```
 ---
 
 ## Running the project
@@ -214,33 +239,6 @@ The field-of-view cone is also intended primarily as a visualization aid rather 
 ## Result
 
 ![tracking](media/movie_rho.gif)
-
----
-
-## Repository structure
-
-```text
-uav-gimbal-tracking-simulink/
-│
-├── README.md
-├── LICENSE
-│
-├── model/
-│   └── UAV_Gimbal_Stabilization_and_Moving_Target_Tracking.slx
-│
-├── scripts/
-│   ├── animate_gimbal_tracking.m
-│   └── plot_monitoring_results.m
-│
-├── media/
-│   ├── uav_gimbal_tracking.gif
-│   ├── azimuth_tracking.png
-│   ├── elevation_tracking.png
-│   └── tracking_errors.png
-│
-└── docs/
-    └── model_overview.png
-```
 
 ---
 
