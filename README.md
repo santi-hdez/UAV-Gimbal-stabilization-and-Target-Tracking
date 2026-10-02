@@ -8,7 +8,7 @@ The model computes the line of sight (LOS) from a moving UAV to a moving ground 
 
 ## Overview
 
-![Simulink model](docs/model_overview.png)
+![Simulink model](docs/media/model_overview.png)
 
 The simulation includes:
 
