@@ -136,7 +136,7 @@ Additional attitude disturbances are introduced during the simulation to examine
 
 Angular measurement noise is also included in the LOS measurements.
 
-Together, these effects provide a simple test environment for evaluating the closed-loop tracking response under changing operating conditions.
+Together, these effects provide a simple test environment for evaluating the tracking response under changing operating conditions.
 
 ## 3D Visualization
 
