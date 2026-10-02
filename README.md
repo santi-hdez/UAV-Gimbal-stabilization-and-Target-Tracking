@@ -25,8 +25,6 @@ The simulation includes:
 
 ## Simulink Model
 
-![Simulink model](docs/model_overview.png)
-
 The simulation can be divided conceptually into four stages:
 
 1. **UAV and target kinematics**
