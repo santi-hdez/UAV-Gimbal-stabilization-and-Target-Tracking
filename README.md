@@ -171,24 +171,6 @@ The UAV geometry and gimbal size in the animation are deliberately enlarged for 
 
 The field-of-view cone is also intended primarily as a visualization aid rather than as a optical camera model.
 
-## Results
-
-### Azimuth tracking
-
-![Azimuth tracking](media/azimuth_tracking.png)
-
-### Elevation tracking
-
-![Elevation tracking](media/elevation_tracking.png)
-
-### Tracking error
-
-![Tracking error](media/tracking_errors.png)
-
-The tracking plots compare the desired and actual gimbal angles and show the corresponding angular errors throughout the simulation.
-
-They illustrate the response of the two-axis controller to the time-varying LOS command, UAV attitude motion, measurement noise, and imposed attitude disturbances.
-
 ## Running the project
 
 1. Clone or download the repository.
@@ -238,30 +220,4 @@ uav-gimbal-tracking-simulink/
     └── model_overview.png
 ```
 
-## Implementation notes
 
-The Simulink model exports simulation data to MATLAB for post-processing and visualization.
-
-The 3D animation uses the simulated UAV position and attitude together with the actual gimbal azimuth and elevation to reconstruct the camera orientation in world coordinates.
-
-For visualization, the body-to-world transformation is
-
-$$
-\mathbf{u}_{\mathrm{cam},W}
-=
-R\mathbf{u}_{\mathrm{cam},B}
-$$
-
-where the camera direction in body coordinates is
-
-$$
-\mathbf{u}_{\mathrm{cam},B}
-=
-\begin{bmatrix}
-\cos(\mathrm{el})\cos(\mathrm{az}) \\
-\cos(\mathrm{el})\sin(\mathrm{az}) \\
-\sin(\mathrm{el})
-\end{bmatrix}
-$$
-
-The animation also displays a recent history of the UAV and target trajectories to make their relative motion easier to interpret.
