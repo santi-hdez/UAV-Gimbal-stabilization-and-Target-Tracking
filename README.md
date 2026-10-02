@@ -265,11 +265,3 @@ $$
 $$
 
 The animation also displays a recent history of the UAV and target trajectories to make their relative motion easier to interpret.
-
-## Notes
-
-This project was developed as a compact controls, modeling, and simulation exercise.
-
-The model intentionally focuses on the main elements of the tracking problem rather than reproducing the complete dynamics, sensor suite, aerodynamics, or actuator architecture of a real UAV/gimbal system.
-
-The UAV geometry, gimbal dimensions, actuator parameters, sensor characteristics, and visualization elements are illustrative and are not intended to reproduce a specific real-world platform.
