@@ -219,12 +219,6 @@ uav-gimbal-tracking-simulink/
 
 5. Run:
 
-   `scripts/plot_monitoring_results.m`
-
-   to generate the tracking-performance plots.
-
-6. Run:
-
    `scripts/animate_gimbal_tracking.m`
 
    to generate the 3D visualization and animated GIF.
