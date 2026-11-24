@@ -209,15 +209,13 @@ uav-gimbal-tracking-simulink/
 
 1. Clone or download the repository.
 
-2. Open MATLAB and Simulink.
-
-3. Open the Simulink model:
+2. Open the Simulink model:
 
    `model/UAV_Gimbal_Stabilization_and_Moving_Target_Tracking.slx`
 
-4. Run the Simulink simulation.
+3. Run the Simulink simulation.
 
-5. Run:
+4. Run:
 
    `scripts/animate_gimbal_tracking.m`
 
