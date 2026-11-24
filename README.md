@@ -119,7 +119,7 @@ Current controller parameters are:
 Back-calculation anti-windup is enabled with `Kb = 1` to prevent excessive accumulation of the integral term when the commanded torque exceeds the physical actuator limits. The evolution of the integral torque contribution $I(t)$ is modified according to
 
 $$
-\frac{dI(t)}{dt} = K_i e(t) + K_b (\tau_{\mathrm{sat}}(t) - \tau_{\mathrm{cmd}}(t))
+\frac{dI(t)}{dt} = K_i e(t) + K_b \left(\tau_{\mathrm{sat}}(t) - \tau_{\mathrm{cmd}}(t)\right)
 $$
 
 where $\tau_{\mathrm{sat}}$ is the torque after saturation and $K_b$ is the back-calculation gain, which determines the strength of the correction.
@@ -129,7 +129,7 @@ This feedback counteracts excessive integral accumulation during actuator satura
 The azimuth error is wrapped to the interval $[-\pi,\pi)$ according to
 
 $$
-e_{\mathrm{az,wrapped}} = \operatorname{mod}(e_{\mathrm{az}} + \pi, 2\pi) - \pi
+e_{\mathrm{az,wrapped}} = \bmod e_{\mathrm{az}} + \pi, 2\pi) - \pi
 $$
 
 This avoids artificial error jumps when crossing the angular coordinate boundary and ensures that the controller selects the shortest angular rotation, assuming unrestricted azimuth motion.
