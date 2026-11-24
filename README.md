@@ -30,7 +30,7 @@ The simulation can be divided conceptually into four stages:
 1. **UAV and target kinematics**
 2. **LOS geometry and sensor model**
 3. **Gimbal control**
-4. **Gimbal dynamics and monitoring**
+4. **Gimbal monitoring**
 
 ![Simulink model](media/model_overview.png)
 
