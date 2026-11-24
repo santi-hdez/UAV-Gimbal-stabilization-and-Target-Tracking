@@ -65,7 +65,7 @@ $$
 The body coordinate convention used in the model is:
 
 - +x: forward
-- +y: lateral
+- +y: left
 - +z: upward
 
 Zero gimbal azimuth and elevation therefore correspond to a camera boresight aligned with the UAV +x body axis.
