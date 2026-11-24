@@ -94,9 +94,9 @@ Angular measurement noise is added to the desired LOS angles before they are sup
 
 ### Gimbal controller
 
-Independent PID controllers are used for the azimuth and elevation axes.
+Independent PID controllers are used for the azimuth and elevation axes. Each controller computes the commanded torque from the angular tracking error $e(t)$ between the measured desired line-of-sight (LOS) direction and the actual gimbal orientation.
 
-The controller uses the angular tracking error $e(t)$ between the measured desired LOS direction and the actual gimbal orientation to generate the commanded torque for each axis. The ideal PID control law is given by
+The ideal PID control law is given by
 
 $$
 \tau_{\mathrm{cmd}}(t) = K_p e(t) + K_i \int_0^t e(t')\,dt' + K_d \frac{de(t)}{dt}
@@ -104,35 +104,67 @@ $$
 
 where:
 
-- $K_p$: proportional gain, which corrects the instantaneous tracking error.
-- $K_i$: integral gain, which compensates for accumulated tracking errors.
-- $K_d$: derivative gain, which provides damping and mitigates the possibility of overshooting.
+- $K_p$: proportional gain, which determines the response to the instantaneous tracking error.
+- $K_i$: integral gain, which compensates for persistent tracking errors by accumulating the error over time.
+- $K_d$: derivative gain, which accounts for the rate of change of the tracking error, providing damping and reducing overshoot.
 - $N$: derivative filter coefficient, which controls the attenuation of high-frequency measurement noise.
 
-Current controller parameters are:
+**Derivative filtering**
+
+Since differentiation amplifies high-frequency measurement noise, a first-order low-pass filter is applied to the derivative term to prevent undesirable torque fluctuations. In the Laplace domain, the ideal derivative transfer function $K_d s$ is replaced by
+
+$$
+D(s) = K_d s \frac{N}{s+N}
+$$
+
+where $s$ is the Laplace variable and $N/(s+N)$ is the low-pass filter transfer function, characterised by a time constant and cutoff frequency given by
+
+$$
+T_f = \frac{1}{N}, \qquad f_c = \frac{N}{2\pi}
+$$
+
+Below the cutoff frequency, the derivative term approximates an ideal differentiator, while at higher frequencies the filter limits noise amplification. Smaller values of $N$ provide stronger noise attenuation but a slower derivative response, whereas larger values provide a faster response at the expense of increased noise sensitivity.
+
+In the current model, $N = 100$ for both axes, corresponding to a time constant of 0.01 s and a cutoff frequency of approximately 15.9 Hz.
+
+**Controller parameters**
 
 | Axis | Kp | Ki | Kd | N |
 |---|---:|---:|---:|---:|
 | Azimuth | 2.0 | 0.5 | 0.20 | 100 |
 | Elevation | 1.8 | 0.4 | 0.18 | 100 |
 
-Back-calculation anti-windup is enabled with `Kb = 1` to prevent excessive accumulation of the integral term when the commanded torque exceeds the physical actuator limits. The evolution of the integral torque contribution $I(t)$ is modified according to
+**Back-calculation anti-windup**
+
+Back-calculation anti-windup is enabled with `Kb = 1` to prevent excessive accumulation of the integral term during actuator saturation.
+
+In the ideal PID formulation, assuming zero initial integral contribution,
+
+$$
+I(t) = K_i \int_0^t e(t')\,dt'
+$$
+
+and therefore
+
+$$
+\frac{dI(t)}{dt} = K_i e(t)
+$$
+
+When the commanded torque exceeds the physical actuator limits, the integral term may continue accumulating error without producing additional actuator torque. This phenomenon, known as integral windup, can cause overshoot and slow controller recovery.
+
+To mitigate this effect, back-calculation modifies the evolution of the integral contribution according to
 
 $$
 \frac{dI(t)}{dt} = K_i e(t) + K_b \left(\tau_{\mathrm{sat}}(t) - \tau_{\mathrm{cmd}}(t)\right)
 $$
 
-where $\tau_{\mathrm{sat}}$ is the torque after saturation and $K_b$ is the back-calculation gain, which determines the strength of the correction.
+where:
 
-This feedback counteracts excessive integral accumulation during actuator saturation, reducing overshoot and improving controller recovery. When no saturation occurs, the correction term is zero and the controller operates normally.
+- $\tau_{\mathrm{cmd}}$: torque requested by the PID controller before saturation.
+- $\tau_{\mathrm{sat}}$: torque after applying the physical actuator limits.
+- $K_b$: back-calculation gain, which determines the strength of the correction.
 
-The azimuth error is wrapped to the interval $[-\pi,\pi)$ according to
-
-$$
-e_{\mathrm{az,wrapped}} = \bmod e_{\mathrm{az}} + \pi, 2\pi) - \pi
-$$
-
-This avoids artificial error jumps when crossing the angular coordinate boundary and ensures that the controller selects the shortest angular rotation, assuming unrestricted azimuth motion.
+The difference between the saturated and commanded torques provides a feedback correction that counteracts integral windup, reducing overshoot and improving recovery after saturation. When no saturation occurs, both torques are equal, the correction vanishes, and standard PID integration is recovered.
 
 ---
 
