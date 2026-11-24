@@ -122,9 +122,7 @@ $$
 T_f = \frac{1}{N}, \qquad f_c = \frac{N}{2\pi}
 $$
 
-Below the cutoff frequency, the derivative term approximates an ideal differentiator, while at higher frequencies the filter limits noise amplification. Smaller values of $N$ provide stronger noise attenuation but a slower derivative response, whereas larger values provide a faster response at the expense of increased noise sensitivity.
-
-In the current model, $N = 100$ for both axes, corresponding to a time constant of 0.01 s and a cutoff frequency of approximately 15.9 Hz.
+Above the cutoff frequency the filter limits noise amplification. Smaller values of $N$ provide stronger noise attenuation but a slower derivative response, whereas larger values provide a faster response at the expense of increased noise sensitivity.
 
 **Controller parameters**
 
