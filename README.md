@@ -167,8 +167,6 @@ The visualization displays:
 - Control torques
 - True 3D pointing error
 
-The camera direction is first constructed in UAV body coordinates from the simulated gimbal angles and then transformed into world coordinates using the UAV attitude.
-
 The true 3D pointing error is calculated from the angle between the LOS unit vector and camera boresight:
 
 $$
