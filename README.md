@@ -110,7 +110,7 @@ where:
 
 **Derivative filtering**
 
-Since differentiation amplifies high-frequency measurement noise, a first-order low-pass filter is applied to the derivative term to prevent undesirable torque fluctuations. In the Laplace domain, the ideal derivative transfer function $K_d s$ is replaced by
+Since differentiation amplifies high-frequency measurement noise, a first-order low-pass filter is applied to the derivative term. In the Laplace domain, the ideal derivative transfer function $K_d s$ is replaced by
 
 $$
 D(s) = K_d s \frac{N}{s+N}
