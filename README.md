@@ -107,7 +107,6 @@ where:
 - $K_p$: proportional gain, which determines the response to the instantaneous tracking error.
 - $K_i$: integral gain, which compensates for persistent tracking errors by accumulating the error over time.
 - $K_d$: derivative gain, which accounts for the rate of change of the tracking error, providing damping and reducing overshoot.
-- $N$: derivative filter coefficient, which controls the attenuation of high-frequency measurement noise.
 
 **Derivative filtering**
 
