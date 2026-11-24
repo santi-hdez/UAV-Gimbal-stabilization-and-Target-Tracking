@@ -96,7 +96,18 @@ Angular measurement noise is added to the desired LOS angles before they are sup
 
 Independent PID controllers are used for the azimuth and elevation axes.
 
-The controller uses the angular tracking error between the measured desired LOS direction and the actual gimbal orientation to generate the commanded torque for each axis.
+The controller uses the angular tracking error $e(t)$ between the measured desired LOS direction and the actual gimbal orientation to generate the commanded torque for each axis. The ideal PID control law is given by
+
+$$
+\tau_{\mathrm{cmd}}(t) = K_p e(t) + K_i \int_0^t e(t')\,dt' + K_d \frac{de(t)}{dt}
+$$
+
+where:
+
+- $K_p$: proportional gain, which corrects the instantaneous tracking error.
+- $K_i$: integral gain, which compensates for accumulated tracking errors.
+- $K_d$: derivative gain, which provides damping and mitigates the possibility of overshooting.
+- $N$: derivative filter coefficient, which controls the attenuation of high-frequency measurement noise.
 
 Current controller parameters are:
 
@@ -105,9 +116,23 @@ Current controller parameters are:
 | Azimuth | 2.0 | 0.5 | 0.20 | 100 |
 | Elevation | 1.8 | 0.4 | 0.18 | 100 |
 
-Back-calculation anti-windup is enabled with `Kb = 1`.
+Back-calculation anti-windup is enabled with `Kb = 1` to prevent excessive accumulation of the integral term when the commanded torque exceeds the physical actuator limits. The evolution of the integral torque contribution $I(t)$ is modified according to
 
-The azimuth error is wrapped to the interval [-pi, pi] to avoid discontinuities when crossing the angular boundary.
+$$
+\frac{dI(t)}{dt} = K_i e(t) + K_b \left(\tau_{\mathrm{sat}}(t) - \tau_{\mathrm{cmd}}(t)\right)
+$$
+
+where $\tau_{\mathrm{sat}}$ is the torque after saturation and $K_b$ is the back-calculation gain, which determines the strength of the correction.
+
+This feedback counteracts excessive integral accumulation during actuator saturation, reducing overshoot and improving controller recovery. When no saturation occurs, the correction term is zero and the controller operates normally.
+
+The azimuth error is wrapped to the interval $[-\pi,\pi)$ according to
+
+$$
+e_{\mathrm{az,wrapped}} = \operatorname{mod}(e_{\mathrm{az}} + \pi, 2\pi) - \pi
+$$
+
+This avoids artificial error jumps when crossing the angular coordinate boundary and ensures that the controller selects the shortest angular rotation, assuming unrestricted azimuth motion.
 
 ---
 
