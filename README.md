@@ -1,6 +1,6 @@
 # UAV Gimbal Stabilization and Moving-Target Tracking
 
-MATLAB/Simulink project for modeling and controlling a two-axis gimbal mounted on a moving UAV.
+MATLAB/Simulink project for modeling and controlling a two-axis gimbal mounted on a moving Unmanned Aerial Vehicle (UAV).
 
 The model computes the line of sight (LOS) from a moving UAV to a moving ground target, transforms the target direction into the UAV body frame, and controls the gimbal azimuth and elevation to maintain target tracking despite UAV attitude motion, sensor noise, actuator dynamics, and attitude disturbances.
 
@@ -19,7 +19,7 @@ The simulation includes:
 - Two-axis rotational gimbal dynamics
 - Torque, angular-rate, and angular-position constraints
 - Tracking-error monitoring
-- 3D visualization of the UAV, target, LOS, camera boresight, and field of view
+- 3D visualization of the simulated system
 
 ---
 
