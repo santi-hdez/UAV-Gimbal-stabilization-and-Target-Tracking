@@ -137,7 +137,7 @@ In the current model, $N = 100$ for both axes, corresponding to a time constant 
 
 Back-calculation anti-windup is enabled with `Kb = 1` to prevent excessive accumulation of the integral term during actuator saturation.
 
-In the ideal PID formulation, assuming zero initial integral contribution,
+Assuming zero initial integral contribution,
 
 $$
 I(t) = K_i \int_0^t e(t')\,dt'
@@ -149,7 +149,7 @@ $$
 \frac{dI(t)}{dt} = K_i e(t)
 $$
 
-When the commanded torque exceeds the physical actuator limits, the integral term may continue accumulating error without producing additional actuator torque. This phenomenon, known as integral windup, can cause overshoot and slow controller recovery.
+When the commanded torque exceeds the physical actuator limits, the integral term can continue accumulating error without producing additional actuator torque. This can cause overshoot and affect controller recovery.
 
 To mitigate this effect, back-calculation modifies the evolution of the integral contribution according to
 
@@ -163,7 +163,7 @@ where:
 - $\tau_{\mathrm{sat}}$: torque after applying the physical actuator limits.
 - $K_b$: back-calculation gain, which determines the strength of the correction.
 
-The difference between the saturated and commanded torques provides a feedback correction that counteracts integral windup, reducing overshoot and improving recovery after saturation. When no saturation occurs, both torques are equal, the correction vanishes, and standard PID integration is recovered.
+The difference between the saturated and commanded torques provides a feedback correction, effectively reducing overshoot.
 
 ---
 
