@@ -119,7 +119,7 @@ Current controller parameters are:
 Back-calculation anti-windup is enabled with `Kb = 1` to prevent excessive accumulation of the integral term when the commanded torque exceeds the physical actuator limits. The evolution of the integral torque contribution $I(t)$ is modified according to
 
 $$
-\frac{dI(t)}{dt} = K_i e(t) + K_b \left(\tau_{\mathrm{sat}}(t) - \tau_{\mathrm{cmd}}(t)\right)
+\frac{dI(t)}{dt} = K_i e(t) + K_b (\tau_{\mathrm{sat}}(t) - \tau_{\mathrm{cmd}}(t))
 $$
 
 where $\tau_{\mathrm{sat}}$ is the torque after saturation and $K_b$ is the back-calculation gain, which determines the strength of the correction.
