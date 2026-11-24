@@ -180,6 +180,7 @@ $$
 $$
 
 The field-of-view cone is intended as a visualization aid and it does not correspond to a model.
+
 ---
 
 ## Repository structure
