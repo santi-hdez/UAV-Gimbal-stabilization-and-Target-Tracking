@@ -179,9 +179,7 @@ $$
 \right)
 $$
 
-The UAV geometry and gimbal size in the animation are deliberately enlarged for visibility and are not drawn to physical scale.
-
-The field-of-view cone is also intended primarily as a visualization aid rather than as a optical camera model.
+The field-of-view cone is intended as a visualization aid and it does not correspond to a model.
 ---
 
 ## Repository structure
