@@ -110,19 +110,7 @@ where:
 
 **Derivative filtering**
 
-Since differentiation amplifies high-frequency measurement noise, a first-order low-pass filter is applied to the derivative term. In the Laplace domain, the ideal derivative transfer function $K_d s$ is replaced by
-
-$$
-D(s) = K_d s \frac{N}{s+N}
-$$
-
-where $s$ is the Laplace variable and $N/(s+N)$ is the low-pass filter transfer function, characterised by a time constant and cutoff frequency given by
-
-$$
-T_f = \frac{1}{N}, \qquad f_c = \frac{N}{2\pi}
-$$
-
-Above the cutoff frequency the filter limits noise amplification. Smaller values of $N$ provide stronger noise attenuation but a slower derivative response, whereas larger values provide a faster response at the expense of increased noise sensitivity.
+Since differentiation amplifies high-frequency measurement noise, a first-order low-pass filter is applied to the derivative term. The filter coefficient $N$ determines the degree of high-frequency noise attenuation and the responsiveness of the derivative term. Smaller values of $N$ provide stronger noise attenuation but a slower derivative response, whereas larger values provide a faster response at the expense of increased noise sensitivity.
 
 **Controller parameters**
 
